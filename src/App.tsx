@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import HeadersPage from "./Components/Headers";
+import SearchBar from "./Components/SearchBar";
+import AlgorithmCard from "./Components/AlgoCard";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import FindDuplicate from "./Algorithms/findDuplicate";
+import BubbleSort from "./Algorithms/BubbleSort"; // Import Bubble Sort Page
+import TowerOfHanoi from "./Algorithms/TowerofHanoi";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearchQuery = (query: string) => {
+    setSearchQuery(query);
+    console.log("Searching for:", query);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div className="-mt-28 relative isolate overflow-hidden bg-gray-900 min-h-screen flex flex-col justify-between py-16 sm:py-24 lg:py-32">
+              <HeadersPage
+                title="Algorithm Visualizer"
+                description="Algorithm Visualizer is an interactive tool to explore, visualize, and understand various algorithms with dynamic animations..."
+              />
+              <SearchBar searchQuery={searchQuery} setSearchQuery={handleSearchQuery} />
+              <AlgorithmCard   />
+            </div>
+          }
+        />
+        <Route path="/find-duplicates" element={<FindDuplicate />} />
+        <Route path="/bubble-sort" element={<BubbleSort />} /> 
+        <Route path="/tower-of-hanoi" element={<TowerOfHanoi />} /> 
+
+      </Routes>
+    </Router>
+  );
 }
 
 export default App
