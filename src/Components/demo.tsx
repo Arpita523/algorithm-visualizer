@@ -1,81 +1,105 @@
-// import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-// interface Algorithm {
-//   category: string;
-//   title: string;
-//   description: string;
-//   tags: string[];
-//   timeComplexity: string;
-//   spaceComplexity: string;
-// }
+const TowerOfHanoiSource = () => {
+    const navigate = useNavigate();
 
-// const defaultAlgorithms: Algorithm[] = [
-//   {
-//     title: "Bubble Sort",
-//     category: "sorting",
-//     description: "A simple sorting algorithm that repeatedly steps through the list, compares adjacent elements...",
-//     timeComplexity: "O(n²)",
-//     spaceComplexity: "O(1)",
-//     tags: ["array", "sorting", "comparison"]
-//   },
-//   {
-//     title: "Find Duplicates",
-//     category: "searching",
-//     description: "Find all duplicate numbers in an array using constant extra space.",
-//     timeComplexity: "O(n)",
-//     spaceComplexity: "O(1)",
-//     tags: ["array", "hash", "space optimization"]
-//   }
-// ];
+    const handleBack = () => {
+        navigate('/tower-of-hanoi');
+    };
 
-// const categoryColors: { [key: string]: string } = {
-//   sorting: "bg-blue-100 text-blue-800",
-//   searching: "bg-green-100 text-green-800",
-//   dynamic: "bg-pink-100 text-pink-800"
-// };
+    return (
+        <div className="min-h-screen bg-gray-900 p-6">
+            <div className="bg-white p-6 rounded-2xl shadow-lg w-full max-w-4xl mx-auto">
+                <div className="flex justify-between items-center mb-6">
+                    <h2 className="text-3xl font-bold font-serif">Tower Of Hanoi</h2>
+                    <button 
+                        onClick={handleBack}
+                        className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded flex items-center"
+                    >
+                        <span className="mr-2">←</span>
+                        <span>Hide Source</span>
+                    </button>
+                </div>
 
-// const AlgorithmCard: React.FC<{ algorithms?: Algorithm[] }> = ({ algorithms = defaultAlgorithms }) => {
-//   return (
-//     <div className="relative flex min-h-screen flex-col justify-center overflow-hidden py-6 sm:py-12 top-[-350px]">
-//       <div className="mx-auto max-w-screen-xl px-4 w-full">
-//         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
-//           {algorithms.map((algo, index) => (
-//             <Link key={index} to={`/${algo.title.toLowerCase().replace(/ /g, "-")}`}>
-//               <div className="bg-white rounded-xl shadow-md hover:shadow-lg transform hover:translate-y-2 transition-all duration-300 p-4">
-//                 <div className="flex justify-between items-center mb-2">
-//                   <h3 className="text-xl font-semibold">{algo.title}</h3>
-//                   <span className={`px-2 py-1 rounded-full text-xs ${categoryColors[algo.category]}`}>
-//                     {algo.category}
-//                   </span>
-//                 </div>
-//                 <p className="text-sm text-gray-500 mb-4">{algo.description}</p>
-//                 <div className="flex items-center justify-between">
-//                   <div className="flex space-x-2">
-//                     {algo.tags.map((tag, tagIndex) => (
-//                       <span key={tagIndex} className="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded-full mb-5">
-//                         {tag}
-//                       </span>
-//                     ))}
-//                   </div>
-//                   <button className="text-blue-600 hover:text-blue-800 text-sm"> → </button>
-//                 </div>
-//                 <div className="mt-4 flex justify-between text-sm">
-//                   <div className="flex items-center space-x-1">
-//                     <span className="text-gray-500">⏱️</span>
-//                     <span className="font-medium">{algo.timeComplexity}</span>
-//                   </div>
-//                   <div className="flex items-center space-x-1">
-//                     <span className="text-gray-500">💾</span>
-//                     <span className="font-medium">{algo.spaceComplexity}</span>
-//                   </div>
-//                 </div>
-//               </div>
-//             </Link>
-//           ))}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
+                <div className="mb-8 bg-gray-100 p-4 rounded-lg">
+                    <h3 className="text-xl font-semibold mb-4">Key Learnings</h3>
+                    <ul className="list-disc pl-6 space-y-2">
+                        <li>Recursive algorithm used to solve the classic Tower of Hanoi puzzle</li>
+                        <li>Demonstrates divide and conquer approach</li>
+                        <li>Time complexity: O(2^n) where n is the number of disks</li>
+                        <li>Space complexity: O(n) due to recursive call stack</li>
+                    </ul>
+                </div>
 
-// export default AlgorithmCard;
+                <div className="mb-8">
+                    <h3 className="text-xl font-semibold mb-4">Problem Statement</h3>
+                    <p>
+                        The Tower of Hanoi is a classic problem where we have three rods and n disks. 
+                        The objective is to move the entire stack of disks from the source rod to the destination rod, 
+                        following these rules:
+                    </p>
+                    <ul className="list-disc pl-6 mt-2 space-y-1">
+                        <li>Only one disk can be moved at a time.</li>
+                        <li>Each move consists of taking the upper disk from one of the stacks and placing it on top of another stack.</li>
+                        <li>No disk may be placed on top of a smaller disk.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 className="text-xl font-semibold mb-4">Implementation</h3>
+                    <div className="bg-gray-900 text-white p-4 rounded-lg overflow-x-auto">
+                        <pre className="whitespace-pre-wrap">
+{`function towerOfHanoi(n, source, auxiliary, destination, steps = []) {
+    if (n === 1) {
+        // Move disk 1 from source to destination
+        steps.push({ 
+            disk: 1, 
+            from: source, 
+            to: destination 
+        });
+        return steps;
+    }
+    
+    // Move n-1 disks from source to auxiliary using destination as temporary
+    towerOfHanoi(n - 1, source, destination, auxiliary, steps);
+    
+    // Move the nth disk from source to destination
+    steps.push({ 
+        disk: n, 
+        from: source, 
+        to: destination 
+    });
+    
+    // Move n-1 disks from auxiliary to destination using source as temporary
+    towerOfHanoi(n - 1, auxiliary, source, destination, steps);
+    
+    return steps;
+}
+
+// Function to run the Tower of Hanoi algorithm
+function runTowerOfHanoi(numDisks) {
+    const sourcePeg = 'A';
+    const auxiliaryPeg = 'B';
+    const destinationPeg = 'C';
+    
+    const steps = towerOfHanoi(numDisks, sourcePeg, auxiliaryPeg, destinationPeg);
+    
+    return {
+        totalSteps: steps.length,
+        steps: steps
+    };
+}
+
+// Example usage
+// const result = runTowerOfHanoi(3);
+// console.log(\`Total steps: \${result.totalSteps}\`);
+// console.log(result.steps);`}
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default TowerOfHanoiSource;

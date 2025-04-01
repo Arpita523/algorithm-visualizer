@@ -1,7 +1,9 @@
+import CommonFuncUICard from "../Components/General"
+
 const FindDuplicate = () => {
   return (
     <div>
-      FindDuplicate
+     <CommonFuncUICard/>
     </div>
   )
 }

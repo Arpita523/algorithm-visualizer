@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import FindDuplicate from "./Algorithms/findDuplicate";
 import BubbleSort from "./Algorithms/BubbleSort"; // Import Bubble Sort Page
 import TowerOfHanoi from "./Algorithms/TowerofHanoi";
+import algoListData from "./Components/AlgoCardList.json"
+import TowerOfHanoiSource from "./AlgoSourcePage/towerOfHanoiSorce";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -27,13 +29,14 @@ function App() {
                 description="Algorithm Visualizer is an interactive tool to explore, visualize, and understand various algorithms with dynamic animations..."
               />
               <SearchBar searchQuery={searchQuery} setSearchQuery={handleSearchQuery} />
-              <AlgorithmCard   />
+              <AlgorithmCard algorithms={algoListData}/>
             </div>
           }
         />
         <Route path="/find-duplicates" element={<FindDuplicate />} />
         <Route path="/bubble-sort" element={<BubbleSort />} /> 
         <Route path="/tower-of-hanoi" element={<TowerOfHanoi />} /> 
+        <Route path="/tower-of-hanoi-source" element={<TowerOfHanoiSource />} />
 
       </Routes>
     </Router>
