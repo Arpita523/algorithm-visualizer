@@ -8,6 +8,8 @@ import BubbleSort from "./Algorithms/BubbleSort"; // Import Bubble Sort Page
 import TowerOfHanoi from "./Algorithms/TowerofHanoi";
 import algoListData from "./Components/AlgoCardList.json"
 import TowerOfHanoiSource from "./AlgoSourcePage/towerOfHanoiSorce";
+import BinarySearch from "./Algorithms/binarySearch";
+import BinarySearchSource from "./AlgoSourcePage/binarySearchSource";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -34,9 +36,10 @@ function App() {
           }
         />
         <Route path="/find-duplicates" element={<FindDuplicate />} />
-        <Route path="/bubble-sort" element={<BubbleSort />} /> 
         <Route path="/tower-of-hanoi" element={<TowerOfHanoi />} /> 
         <Route path="/tower-of-hanoi-source" element={<TowerOfHanoiSource />} />
+        <Route path="/binary-search" element={<BinarySearch />} /> 
+        <Route path="/binary-search-source" element={<BinarySearchSource />} />
 
       </Routes>
     </Router>
