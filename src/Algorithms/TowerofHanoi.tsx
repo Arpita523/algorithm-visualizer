@@ -48,15 +48,3 @@ const TowerOfHanoi = () => {
 
 export default TowerOfHanoi;
 
-// import CommonFuncUICard from "../Components/General";
-
-// const TowerOfHanoi = () => {
-//     return (
-//         <div>
-//             <CommonFuncUICard name="Tower Of Hanoi" />
-//         </div>
-//     );
-// };
-
-// export default TowerOfHanoi;
-
