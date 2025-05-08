@@ -48,11 +48,11 @@
     "tags": ["algorithm", "conversion", "strings", "base conversion"]
   },
   {
-    "title": "Dijkstra's Algorithm",
-    "category": "Graph",
-    "description": "Algorithm for finding the shortest paths between nodes in a graph with non-negative edge weights.",
-    "timeComplexity": "O(E log V)",
-    "spaceComplexity": "O(V + E)",
-    "tags": ["graph", "shortest-path", "greedy"]
+    "category": "Graphs",
+    "title": "Dijkstra Algorithm",
+    "description": "Finds the shortest path from a source node to all other nodes in a weighted graph with non-negative edge weights.",
+    "tags": ["Shortest Path", "Graph", "Greedy"],
+    "timeComplexity": "O(V²)",
+    "spaceComplexity": "O(V)"
   }
 ]

@@ -16,6 +16,8 @@ import QuickSort from "./Algorithms/QuickSort";
 import QuickSortSource from "./AlgoSourcePage/QuickSortSource";
 import IntegerToAlphabet from "./Algorithms/IntegerToAlphabet";
 import IntegerToAlphabetSource from "./AlgoSourcePage/IntegerToAlphabetSource";
+import DijkstraAlgorithm from "./Algorithms/DijkstraAlgorithm";
+import DijkstraAlgorithmSource from "./AlgoSourcePage/DijkstraAlgorithmSource";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -53,6 +55,8 @@ function App() {
         <Route path="/quick-sort-source" element={<QuickSortSource />} />
         <Route path="integer-to-alphabet" element={<IntegerToAlphabet />} />
         <Route path="/integer-to-alphabet-source" element={<IntegerToAlphabetSource />} />
+        <Route path="/dijkstra-algorithm" element={<DijkstraAlgorithm />} /> 
+        <Route path="/dijkstra-algorithm-source" element={<DijkstraAlgorithmSource />} />
 
       </Routes>
     </Router>
